@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../classes/player'
+require_relative 'player'
 
 class Dealer < Player
   def initialize

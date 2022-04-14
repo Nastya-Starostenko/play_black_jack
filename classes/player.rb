@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'game'
+require_relative 'bank'
 
 class Player
   USER_TYPE = {
@@ -19,7 +19,7 @@ class Player
   end
 
   def make_bet
-    self.deposit -= Game::DEFAULT_BET
+    self.deposit -= Bank::DEFAULT_BET
   end
 
   def take_card(card)

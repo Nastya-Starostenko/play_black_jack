@@ -1,16 +1,15 @@
 # frozen_string_literal: true
-
-require_relative 'human_player'
+#
+require_relative 'bank'
 require_relative 'player'
+require_relative 'human_player'
 require_relative 'dealer'
 require_relative 'deck'
-require_relative 'bank'
 
 class Game
   MAX_CARDS_ON_HANDS = 3
   DEAL_CONDITIONS_POINTS = 17
   MAX_GAME_POINT = 21
-  DEFAULT_BET = 10
 
   def initialize
     create_user
@@ -33,7 +32,7 @@ class Game
       puts 'loop 1 finished'
       puts "Do you want play again?\n  Y - yes, Other - no"
       continue_game = gets.chomp.to_s
-      if continue_game != 'Y' || player.deposit < DEFAULT_BET
+      if continue_game != 'Y' || player.deposit < Bank::DEFAULT_BET
         puts 'Game over'
         break
       end
@@ -69,7 +68,7 @@ class Game
   end
 
   def make_bets
-    @game_bank ||= Bank.new(DEFAULT_BET * 2)
+    @game_bank ||= Bank.new(Bank::DEFAULT_BET * 2)
     player.make_bet
     dealer.make_bet
   end
